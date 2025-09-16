@@ -1,3 +1,4 @@
+import ListItem from "@/components/ListItem";
 import ListItemSseparator from "@/components/ListItemSeperator";
 import { DATA, dataType } from "@/data/appData";
 import colors from "@/styles/colors";
@@ -7,7 +8,6 @@ import {
   FlatList,
   StyleSheet,
   Text,
-  TouchableHighlight,
   View
 } from "react-native";
 
@@ -39,24 +39,11 @@ export default function Index() {
           )
         }
             renderItem={({item}) => (
-              <TouchableHighlight onPress={() => selectedList(item)}>
-                <View style={[styles.flatListRow, 
-                  {
-                    backgroundColor: item.id === selectedId
-                    ? colors.primary
-                    : colors.secondary,
-                  }
-                
-                ]}>
-                  <Text style={[styles.titleText, 
-                    {
-                      color: item.id === selectedId
-                      ? colors.text.light
-                      : colors.text.dark
-                    }
-                  ]}>{item.title}</Text>
-                </View>
-              </TouchableHighlight>
+              <ListItem 
+                item={item}
+                isSelected={item.id === selectedId}
+                onPress={selectedList}
+              />
             )} />
         </View>
       </View>

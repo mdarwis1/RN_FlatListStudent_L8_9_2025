@@ -1,7 +1,7 @@
 import { dataType } from "@/data/appData";
 import colors from "@/styles/colors";
 import React from "react";
-import { StyleSheet, TouchableHighlight, View } from "react-native";
+import { StyleSheet, Text, TouchableHighlight, View } from "react-native";
 
 // declare data type for props here
 /*
@@ -22,23 +22,23 @@ const ListItem: React.FC<propsType> = ({
 }) => {
   return (
   <TouchableHighlight onPress={() => onPress(item)}>
-                <View style={[styles.flatListRow, 
-                  {
-                    backgroundColor: item.id === selectedId
-                    ? colors.primary
-                    : colors.secondary,
-                  }
-                
-                ]}>
-                  <Text style={[styles.titleText, 
-                    {
-                      color: item.id === selectedId
-                      ? colors.text.light
-                      : colors.text.dark
-                    }
-                  ]}>{item.title}</Text>
-                </View>
-              </TouchableHighlight>);
+      <View style={[styles.flatListRow, 
+        {
+          backgroundColor: isSelected
+          ? colors.primary
+          : colors.secondary,
+        }
+      
+      ]}>
+        <Text style={[styles.titleText, 
+          {
+            color: isSelected
+              ? colors.text.light
+              : colors.text.dark
+          }
+        ]}>{item.title}</Text>
+      </View>
+    </TouchableHighlight>);
 };
 
 export default ListItem;
